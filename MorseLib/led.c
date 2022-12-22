@@ -1,0 +1,13 @@
+#include "led.h"
+
+void ledInit(void)
+{
+	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+	
+	GPIOB->CRH &= ~GPIO_CRH_CNF12_0;
+	GPIOB->CRH &= ~GPIO_CRH_CNF12_1;
+	GPIOB->CRH |= GPIO_CRH_MODE12_1;
+	GPIOB->CRH &= ~GPIO_CRH_MODE12_0;
+	
+	GPIOB->ODR |= GPIO_ODR_ODR12;
+}
